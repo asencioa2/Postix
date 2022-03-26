@@ -1,11 +1,13 @@
 <?php
 include ('con.php');
 
-$email = mysqli_real_escape_string($con,$_POST['email']);
-$PASSWORD = mysqli_real_escape_string($con,$_POST['psw']);
+$error = null;
 
 if (isset($_POST['login']))
 {
+    $email = mysqli_real_escape_string($con,$_POST['email']);
+    $PASSWORD = mysqli_real_escape_string($con,$_POST['psw']);
+
     $sql = "select *from teacher where temail = '$email' and tpass = '$PASSWORD'";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -17,7 +19,7 @@ if (isset($_POST['login']))
         header("Location: TeacherHomepage.html");
     }
     else{
-        echo "<h1><center>Invalid username or password.</h1>";
+        $error = "Invalid Information";
     }  
 
     
