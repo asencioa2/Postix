@@ -114,7 +114,9 @@ ul {
   clear: both;
 }
 
-input[type=text], select, textarea{
+input[type="text"],
+select,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -130,8 +132,8 @@ label {
 }
 
 /* Style the submit button */
-input[type=submit] {
-  background-color: #04AA6D;
+input[type="submit"] {
+  background-color: #04aa6d;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -140,12 +142,6 @@ input[type=submit] {
   float: right;
 }
 
-
-
-
-
-
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -153,13 +149,16 @@ input[type=submit] {
   clear: both;
 }
 
-input[type=text], select, textarea{
+input[type="text"],
+select,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
+  font: inherit;
 }
 
 /* Style the label to display next to the inputs */
@@ -169,8 +168,8 @@ label {
 }
 
 /* Style the submit button */
-input[type=submit] {
-  background-color: #04AA6D;
+input[type="submit"] {
+  background-color: var(--darkblue);
   color: white;
   padding: 12px 20px;
   border: none;
@@ -181,7 +180,6 @@ input[type=submit] {
 
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 75px;
   margin: 20px;
 }
@@ -202,12 +200,9 @@ input[type=submit] {
   border-color: black;
 }
 
-
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
-
