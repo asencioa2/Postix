@@ -4,7 +4,7 @@ include ('con.php');
 //
 if(isset($_POST["id"])){
  $query = "DELETE from tasks WHERE id=:id";
- $statement = $connect->prepare($query);
+ $statement = $con->prepare($query);
  $statement->execute(
   array(
    ':id'=> $_POST['id'])

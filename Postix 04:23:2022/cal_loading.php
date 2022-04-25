@@ -5,7 +5,7 @@ include ('con.php');
 $details = array();
 
 $query = "SELECT * FROM tasks ORDER BY id";
-$statement = $connect->prepare($query);
+$statement = $con->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
 

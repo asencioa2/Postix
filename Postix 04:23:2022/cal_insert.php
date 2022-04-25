@@ -3,7 +3,7 @@ include ('con.php');
 
 if(isset($_POST["title"])){
  $query = "INSERT INTO tasks (title, startE, endE) VALUES (:title, :startE, :endE)";
- $statement = $connect->prepare($query);
+ $statement = $con->prepare($query);
  $statement->execute(
   array(
    ':title'=> $_POST['title'],
