@@ -10,7 +10,7 @@ $statement->execute();
 $result = $statement->fetchAll();
 
 foreach($result as $row){
- $details[] = array(
+ $data[] = array(
   'id'=> $row["id"],
   'title'=> $row["title"],
   'start'=> $row["startE"],
@@ -18,6 +18,6 @@ foreach($result as $row){
  );
 }
 
-echo json_encode($details);
+echo json_encode($data);
 
 ?>
