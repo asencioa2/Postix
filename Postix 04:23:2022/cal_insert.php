@@ -1,5 +1,6 @@
 <?php
 include ('con.php');
+session_start();
 
 if(isset($_POST["title"])){
  $query = "INSERT INTO tasks (title, startE, endE) VALUES (:title, :startE, :endE)";

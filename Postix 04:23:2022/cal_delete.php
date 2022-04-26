@@ -1,6 +1,6 @@
 <?php
 include ('con.php');
-//session_start();
+session_start();
 //
 if(isset($_POST["id"])){
  $query = "DELETE from tasks WHERE id=:id";

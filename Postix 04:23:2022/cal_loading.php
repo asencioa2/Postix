@@ -1,6 +1,6 @@
 <?php
 include ('con.php');
-//session_start();
+session_start();
 
 $details = array();
 
