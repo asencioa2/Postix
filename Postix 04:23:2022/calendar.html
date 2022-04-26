@@ -99,6 +99,29 @@
         });
       });
     </script>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Lato", sans-serif;
+      }
+      
+      .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 150px;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+      }
+      
+      .sidebar a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+      }
+      </style>
   </head>
   <body>
     <div class="navbar-container">
@@ -112,6 +135,14 @@
         </ul>
       </div>
     </div>
+
+    <div class="sidebar">
+      <a class="active" href="#username">User Name</a>
+      <a href="#course">Courses</a>
+      <a href="#contacts">Shared Contacts</a>
+      <a href="#notes">Notes</a>
+    </div>
+
     <div class="container">
       <div id="calendar"></div>
     </div>
