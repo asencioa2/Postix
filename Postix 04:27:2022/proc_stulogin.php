@@ -23,7 +23,7 @@ if (isset($_POST['login']))
         $names = $row['suser'];
         $_SESSION['semail'] = $names;
 
-        header("Location: TeacherHomepage.html");
+        header("Location: studentHomepage.html");
     }
     else{
         $error = "Invalid Information";
