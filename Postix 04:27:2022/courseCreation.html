@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Homepage</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="navbar-container">
+      <div class="logo"><a href="#">Postix</a></div>
+      <div class="links">
+        <ul>
+          <li><a href="teacherHomepage.html">Home</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="courseCreation.html">Create A Course</a></li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">Course Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="cname" name="cname" placeholder="Course Name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Course Identification Number</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="CInumber" name="CInumber" placeholder="Enter Identification Number">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="Duration">Duration</label>
+        </div>
+        <label>Start Date:</label>
+          <input type="date" id="start" name="start" required></br>
+        <label >End Date:</label>
+          <input type="date" id="end" name="end" required>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="subject">Course Description</label>
+        </div>
+        <div class="col-75">
+          <textarea id="Cdescr" name="Cdescr" placeholder="Explain Your Course" style="height:200px"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+    </div>
+  </body>
+</html>

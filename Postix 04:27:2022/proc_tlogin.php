@@ -10,16 +10,21 @@ if (isset($_POST['login']))
     $email = mysqli_real_escape_string($con,$_POST['email']);
     $PASSWORD = mysqli_real_escape_string($con,$_POST['psw']);
 
-    $_SESSION['email'] = $email;
+    
 
     $sql = "select *from teacher where temail = '$email' and tpass = '$PASSWORD'";
     $result = mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    
     $count = mysqli_num_rows($result);
 
     if($count == 1){
-        #echo "<h1><center> Login successful </center></h1>";
-        #echo "<h3><center>Welecome: {$email}</h3>";
+
+        $tname =  "select tuser from teacher where temail = '$email' and tpass = '$PASSWORD'";
+        $name = mysqli_query($con,$tname);
+        $row = mysqli_fetch_array($name, MYSQLI_ASSOC);
+        $names = $row['tuser'];
+        $_SESSION['email'] = $names;
+
         header("Location: teacherHomepage.html");
     }
     else{

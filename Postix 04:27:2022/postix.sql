@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2022 at 07:23 PM
+-- Generation Time: Apr 27, 2022 at 06:44 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.27
 
@@ -31,23 +31,29 @@ CREATE TABLE `course` (
   `id` int(50) NOT NULL,
   `name` varchar(150) DEFAULT NULL,
   `descrip` text DEFAULT NULL,
-  `temail` varchar(150) DEFAULT NULL
+  `temail` varchar(150) DEFAULT NULL,
+  `stdate` varchar(50) DEFAULT NULL,
+  `edate` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `polls`
+-- Table structure for table `roster`
 --
 
-CREATE TABLE `polls` (
-  `ques` text DEFAULT NULL,
-  `optiona` varchar(150) DEFAULT NULL,
-  `optionb` varchar(150) DEFAULT NULL,
-  `optionc` varchar(150) DEFAULT NULL,
-  `optiond` varchar(150) DEFAULT NULL,
-  `id` int(11) DEFAULT NULL
+CREATE TABLE `roster` (
+  `id` int(50) DEFAULT NULL,
+  `stu` varchar(75) DEFAULT NULL,
+  `name` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `roster`
+--
+
+INSERT INTO `roster` (`id`, `stu`, `name`) VALUES
+(NULL, 'test@test.edu', 'test');
 
 -- --------------------------------------------------------
 
@@ -67,7 +73,22 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`semail`, `suser`, `spass`, `creation`) VALUES
+('apple@montclair.edu', 'Jace Otis', 'wheelman', '2022-04-14 14:04:59'),
+('godskin@montclair.edu', 'God Skin', 'noble285', '2022-04-20 20:01:31'),
 ('test@test.edu', 'test', '12345678', '2022-04-02 13:21:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tasks`
+--
+
+CREATE TABLE `tasks` (
+  `id` int(20) NOT NULL,
+  `title` varchar(350) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -97,20 +118,25 @@ INSERT INTO `teacher` (`temail`, `tuser`, `tpass`, `creation`) VALUES
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `temail` (`temail`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `polls`
+-- Indexes for table `roster`
 --
-ALTER TABLE `polls`
-  ADD KEY `id` (`id`);
+ALTER TABLE `roster`
+  ADD UNIQUE KEY `stu` (`stu`);
 
 --
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`semail`);
+
+--
+-- Indexes for table `tasks`
+--
+ALTER TABLE `tasks`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `teacher`
@@ -129,6 +155,12 @@ ALTER TABLE `course`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tasks`
+--
+ALTER TABLE `tasks`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -137,12 +169,6 @@ ALTER TABLE `course`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`temail`) REFERENCES `Teacher` (`temail`);
-
---
--- Constraints for table `polls`
---
-ALTER TABLE `polls`
-  ADD CONSTRAINT `polls_ibfk_1` FOREIGN KEY (`id`) REFERENCES `course` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
