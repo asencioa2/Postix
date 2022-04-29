@@ -84,8 +84,10 @@ ul {
 
 .login-buttons {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 15%;
+  margin-left: 43%;
+  justify-content: center;
+  text-align: center;
 }
 
 .login-buttons a {
@@ -106,6 +108,7 @@ ul {
   background: var(--blue);
   color: var(--ice);
 }
+
 
 /* Clear floats after the columns */
 .row:after {
@@ -205,4 +208,144 @@ input[type="submit"] {
   content: "";
   display: table;
   clear: both;
+}
+
+section{
+  width: 100%;
+  height: 100vh;
+  background: white;
+  background-size: cover;
+}
+
+.register-container {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 700px;
+  height: 350px;
+  background: #142d4c;
+}
+
+.register-container .form-content, 
+.register-container .login-form{
+  position: relative;
+  width: 50%;
+  height: 350px;
+  float: left;
+  box-sizing: border-box;
+}
+
+.register-container .form-content{
+  padding: 40px 30px;
+  color: #fff;
+  letter-spacing: 1px;
+
+}
+
+.register-container .form-content a{
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background: #ff0057;
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+
+
+.register-container .login-form{
+  background-color: lightblue;
+  height: 380px;
+  top: -15px;
+  box-shadow: -20px 0 15px rgba(0,0,0,.2);
+  padding: 30px;
+} 
+
+.register-container .login-form h2{
+  color: white;
+}
+
+.register-container .login-form input{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  font-size: 15px;
+}
+
+.register-container .login-form input:hover
+.register-container .login-form input:valid{
+  border: 2px solid #673ab7;
+}
+
+.register-container .login-form input[type="submit"]{
+  color: #fff;
+  background: #673ab7;
+  font-size: 16px;
+  transition: .5s;  
+}
+
+.register-container .login-form input[type="submit"]:hover{
+background: #ff0057;
+border: 2px solid #ff0057;
+}
+
+.register-container .form-content, 
+.register-container .signup-form{
+  position: relative;
+  width: 50%;
+  height: 350px;
+  float: left;
+  box-sizing: border-box;
+}
+
+.register-container .signup-form{
+  background-color: lightblue;
+  height: 550px;
+  top: -15px;
+  box-shadow: -20px 0 15px rgba(0,0,0,.2);
+  padding: 30px;
+} 
+
+.register-container .signup-form h2{
+  color: black;
+}
+
+.register-container .signup-form input{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  font-size: 15px;
+}
+
+.register-container .signup-form input:hover
+.register-container .signup-form input:valid{
+  border: 2px solid #673ab7;
+}
+
+.register-container .signup-form button[type="submit"]{
+  color: #fff;
+  background: #673ab7;
+  font-size: 16px;
+  transition: .5s;  
+  width: 100%;
+  height: 50px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+}
+
+.register-container .signup-form button[type="submit"]:hover{
+background: #ff0057;
+border: 2px solid #ff0057;
 }

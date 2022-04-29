@@ -17,40 +17,50 @@ include 'proc_tlogin.php';
     <div class="navbar-container">
       <div class="logo"><a href="#">Postix Teacher Login</a></div>
     </div>
-    <form action="" method="post">
-      <span>
-        <label for="email">Email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          placeholder="Enter email (must contain .edu)"
-          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9]\.)+(edu)"
-          required
-          title="Sorry, only email addresses ending in .edu are allowed."
-        />
-      </span>
+    <section>
+        <div class = "register-container">
+            <div class = "form-content">
+                <h1>Postix</h1>
+                <p>Where students and teachers connect to making learning fun and easy!!!!.</p>
+                </br>
+                <a href="teacherSignUp.php">Sign Up!</a>
+                <a href="index.html">Back to Home</a>
+            </div>
+            <div class ="login-form">
+                <h2>Log In</h2>
+                <form class = "" action="" method="post">
+                    <span>
+                        <label for="email">Email</label>
+                        <input 
+                        type="text"
+                        name="email"
+                        id="email"
+                        placeholder="Enter email (must contain .edu)"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[edu]{2,}$"
+                        required
+                        title="Sorry, only email addresses ending in .edu are allowed."
+                        />
+                    </span>
 
-      <span>
-        <label for="psw">Password</label>
-        <input
-          type="password"
-          name="psw"
-          id="psw"
-          placeholder="Enter password"
-          pattern=".{8,20}"
-          required
-          title="Password should be 8 to 20 characters long."
-        />
-      </span>
-
-      <a href="index.html">Back to Home</a>
-      <button type="submit" name="login" id="login">Log In!</button>
-      <a href="teacherSignUp.php">Sign Up!</a>
-      
-      <div style="font-size: 30px; text-align: center">
-        <strong><?php echo $error;?></strong>
-      </div>
-    </form>
+                    <span>
+                        <label for="psw">Password</label>
+                        <input
+                        type="password"
+                        name="psw"
+                        id="psw"
+                        placeholder="Enter password"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        required
+                        title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        />
+                    </span>
+                    <input type="submit" name ="login" id = "login">
+                    <div style="font-size: 30px; text-align: center">
+                        <strong><?php echo $error;?></strong>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
   </body>
 </html>
