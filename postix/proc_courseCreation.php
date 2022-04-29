@@ -1,7 +1,11 @@
 <?php
 include ('connection.php');
 
+session_start();
+
 $error = null;
+
+$email = $_SESSION['email'];
 
 if (isset($_POST['submit']))
 {
@@ -11,8 +15,10 @@ if (isset($_POST['submit']))
     $end = mysqli_real_escape_string($con,$_POST['end']);
     $cdes = mysqli_real_escape_string($con,$_POST['cdes']);
 
+    $_SESSION['cid'] = $cinumber;
+
     if ($start < $end) {
-        $sql = "INSERT INTO course (id,cname,cdes,temail,stdate,edate) VALUES ('$cinumber','$cname','$cdes','TESTTEACHER','$start','$end')";
+        $sql = "INSERT INTO course (id,cname,cdes,temail,stdate,edate) VALUES ('$cinumber','$cname','$cdes','$email','$start','$end')";
 
         if (mysqli_query($con, $sql)){
                 
