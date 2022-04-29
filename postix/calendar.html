@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var calendar = $("#calendar").fullCalendar({
+          editable: true,
+          header: {
+            left: "prev,next today",
+            center: "title",
+            right: "month,agendaWeek,agendaDay",
+          },
+          events: "cal_loading.php",
+          selectable: true,
+          selectHelper: true,
+          select: function (start, end, allDay) {
+            var title = prompt("Enter Title");
+            if (title) {
+              var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+              var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+              $.ajax({
+                url: "cal_insert.php",
+                type: "POST",
+                data: { title: title, start: start, end: end },
+                success: function () {
+                  calendar.fullCalendar("refetchEvents");
+                  alert("Task Created");
+                },
+              });
+            }
+          },
+          editable: true,
+          eventResize: function (event) {
+            var start = $.fullCalendar.formatDate(
+              event.start,
+              "Y-MM-DD HH:mm:ss"
+            );
+            var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+            var title = event.title;
+            var id = event.id;
+            $.ajax({
+              url: "cal_update.php",
+              type: "POST",
+              data: { title: title, start: start, end: end, id: id },
+              success: function () {
+                calendar.fullCalendar("refetchEvents");
+                alert("Task Update");
+              },
+            });
+          },
+
+          eventDrop: function (event) {
+            var start = $.fullCalendar.formatDate(
+              event.start,
+              "Y-MM-DD HH:mm:ss"
+            );
+            var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+            var title = event.title;
+            var id = event.id;
+            $.ajax({
+              url: "cal_update.php",
+              type: "POST",
+              data: { title: title, start: start, end: end, id: id },
+              success: function () {
+                calendar.fullCalendar("refetchEvents");
+                alert("Task Updated");
+              },
+            });
+          },
+
+          eventClick: function (event) {
+            if (confirm("Delete selected Task?")) {
+              var id = event.id;
+              $.ajax({
+                url: "cal_delete.php",
+                type: "POST",
+                data: { id: id },
+                success: function () {
+                  calendar.fullCalendar("refetchEvents");
+                  alert("Task Deleted");
+                },
+              });
+            }
+          },
+        });
+      });
+    </script>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Lato", sans-serif;
+      }
+
+      .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 150px;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+      }
+
+      .sidebar a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar-container" style="z-index: 100">
+      <div class="logo">
+        <a
+          href="#"
+          style="
+            font-family: 'Times New Roman', Times, serif;
+            color: #ececec;
+            text-decoration: none;
+          "
+          >Postix</a
+        >
+      </div>
+      <div class="links" style="height: 64px">
+        <ul
+          style="
+            height: 100%;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-right: 40px;
+            font-size: 1.125rem;
+          "
+        >
+          <li>
+            <a
+              href="teacherHomepage.html"
+              style="color: #ececec; text-decoration: none"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="courseCreation.php"
+              style="color: #ececec; text-decoration: none"
+              >Create a Course</a
+            >
+          </li>
+          <li>
+            <a href="roster.php" style="color: #ececec; text-decoration: none"
+              >Roster</a
+            >
+          </li>
+          <li>
+            <a
+              href="calendar.html"
+              style="color: #ececec; text-decoration: none"
+              >Calendar</a
+            >
+          </li>
+
+          <li>
+            <a href="index.html" style="color: #ececec; text-decoration: none"
+              >Log Out</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <a class="active" href="#">User Name</a>
+      <a href="#">Courses</a>
+      <a href="#">Shared Contacts</a>
+      <a href="#">Notes</a>
+    </div>
+
+    <div class="container">
+      <div id="calendar"></div>
+    </div>
+  </body>
+</html>
