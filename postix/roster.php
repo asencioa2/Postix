@@ -16,6 +16,8 @@ $msg = null;
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
+$id = $_SESSION['cid'];
+
 // This code will check if the submit button has been clicked and will execute the code
 if (isset($_POST['submit'])){
   
@@ -31,7 +33,7 @@ if (isset($_POST['submit'])){
   $check ="SELECT stu FROM roster where stu='$add'";
 
   if($tcount==1){
-    $sql = "INSERT INTO roster (stu,name) VALUES ('$add','$name')";
+    $sql = "INSERT INTO roster (id,stu,name) VALUES ('$id','$add','$name')";
     $result = mysqli_query($con,$sql);
     $msg = "Student ".$name. " has been added to the class roster";
   }
@@ -56,7 +58,7 @@ if(isset($_POST['delete'])){
   $check ="SELECT stu FROM roster where stu='$delete'";
 
   if($tcount==1){
-    $result = "DELETE FROM roster WHERE stu='$delete'";
+    $result = "DELETE FROM roster WHERE stu='$delete' and id='$id'";
     mysqli_query($con,$result);
     $msg = "Student ".$name. " has been deleted from the class roster";
 
@@ -85,7 +87,7 @@ if(isset($_POST['delete'])){
           <li><a href="courseCreation.php">Create a Course</a></li>
           <li><a href="roster.php">Roster</a></li>
           <li><a href="calendar.html">Calendar</a></li>
-          <li><a href="index.html">Log Out</a></li>
+          <li><a href="logout.php">Log Out</a></li>
         </ul>
       </div>
     </div>
@@ -118,7 +120,7 @@ if(isset($_POST['delete'])){
     <br><br>
     <?php
       // Creates a table of all curerent students in the roster
-      $sql = "SELECT * FROM roster";
+      $sql = "SELECT * FROM roster WHERE id='$id'";
       $result = mysqli_query($con, $sql);
 
       echo "<table border='1'>
@@ -136,6 +138,7 @@ if(isset($_POST['delete'])){
           echo "</tr>";
       }
       echo "</table>";
+
 
     ?>
 
