@@ -22,7 +22,7 @@ include('proc_courseCreation.php');
           <li><a href="courseCreation.php">Create a Course</a></li>
           <li><a href="roster.php">Roster</a></li>
           <li><a href="calendar.html">Calendar</a></li>
-          <li><a href="index.html">Log Out</a></li>
+          <li><a href="logout.php">Log Out</a></li>
         </ul>
       </div>
     </div>
