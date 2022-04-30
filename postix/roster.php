@@ -16,7 +16,7 @@ $msg = null;
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
-$id = $_SESSION['cid'];
+$teach = $_SESSION['email'];
 
 // This code will check if the submit button has been clicked and will execute the code
 if (isset($_POST['submit'])){
@@ -33,9 +33,11 @@ if (isset($_POST['submit'])){
   $check ="SELECT stu FROM roster where stu='$add'";
 
   if($tcount==1){
-    $sql = "INSERT INTO roster (id,stu,name) VALUES ('$id','$add','$name')";
+
+    $sql = "INSERT INTO roster (stu,name,teacher) VALUES ('$add','$name','$teach')";
     $result = mysqli_query($con,$sql);
     $msg = "Student ".$name. " has been added to the class roster";
+    
   }
   elseif(mysqli_query($con,$check)){
     $error = "Error: This email ".$add. " is not a valid student account";
@@ -58,7 +60,7 @@ if(isset($_POST['delete'])){
   $check ="SELECT stu FROM roster where stu='$delete'";
 
   if($tcount==1){
-    $result = "DELETE FROM roster WHERE stu='$delete' and id='$id'";
+    $result = "DELETE FROM roster WHERE stu='$delete' and teacher='$teach'";
     mysqli_query($con,$result);
     $msg = "Student ".$name. " has been deleted from the class roster";
 
@@ -120,7 +122,7 @@ if(isset($_POST['delete'])){
     <br><br>
     <?php
       // Creates a table of all curerent students in the roster
-      $sql = "SELECT * FROM roster WHERE id='$id'";
+      $sql = "SELECT * FROM roster WHERE teacher='$teach'";
       $result = mysqli_query($con, $sql);
 
       echo "<table border='1'>
@@ -139,10 +141,10 @@ if(isset($_POST['delete'])){
       }
       echo "</table>";
 
-
     ?>
 
     
 
   </body>
 </html>
+
