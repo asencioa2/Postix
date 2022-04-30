@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2022 at 06:44 PM
+-- Generation Time: Apr 30, 2022 at 03:07 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.27
 
@@ -36,6 +36,13 @@ CREATE TABLE `course` (
   `edate` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `cname`, `cdes`, `temail`, `stdate`, `edate`) VALUES
+(12345678, 'Pizzasaadsd', 'adasdasd', 'test', '2022-04-03', '2022-05-05');
+
 -- --------------------------------------------------------
 
 --
@@ -43,17 +50,20 @@ CREATE TABLE `course` (
 --
 
 CREATE TABLE `roster` (
-  `id` int(50) DEFAULT NULL,
   `stu` varchar(75) DEFAULT NULL,
-  `name` varchar(150) DEFAULT NULL
+  `name` varchar(150) DEFAULT NULL,
+  `teacher` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `roster`
 --
 
-INSERT INTO `roster` (`id`, `stu`, `name`) VALUES
-(NULL, 'test@test.edu', 'test');
+INSERT INTO `roster` (`stu`, `name`, `teacher`) VALUES
+('apple@montclair.edu', 'Jace Otis', 'Allen Asencio'),
+('apple@montclair.edu', 'Jace Otis', 'test'),
+('godskin@montclair.edu', 'God Skin', 'Allen Asencio'),
+('test@test.edu', 'test', 'test');
 
 -- --------------------------------------------------------
 
@@ -108,20 +118,18 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`temail`, `tuser`, `tpass`, `creation`) VALUES
-('test@test.edu', 'test', '12345678', '2022-04-02 13:18:24');
-
+('test@test.edu', 'test', '12345Ass', '2022-04-02 13:18:24'),
+('william@montclair.edu', 'Allen Asencio', 'Otisjace9', '2022-04-29 18:44:51');
 
 --
--- Indexes for table `course`
+-- Indexes for dumped tables
 --
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `roster`
 --
 ALTER TABLE `roster`
-  ADD UNIQUE KEY `stu` (`stu`);
+  ADD UNIQUE KEY `stu` (`stu`,`name`,`teacher`);
 
 --
 -- Indexes for table `students`
@@ -141,24 +149,18 @@ ALTER TABLE `tasks`
 ALTER TABLE `teacher`
   ADD PRIMARY KEY (`temail`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `course`
---
-ALTER TABLE `course`
-  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`temail`) REFERENCES `Teacher` (`temail`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
