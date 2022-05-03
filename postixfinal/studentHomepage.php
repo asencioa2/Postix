@@ -22,11 +22,16 @@
     <div class="course-container">
       <?php
       include ('connection.php');
+
       session_start();
       $email = $_SESSION['email'];
+      
+      echo $email;
+
       error_reporting(E_ALL);
       ini_set('display_errors', 0);
-      $sql =  "select * from course where semail = '$email'";
+      
+      $sql =  "select * from roster where stu = '$email'";
       $result = mysqli_query($con,$sql);
       echo "<br>";
       echo "<table border='1'>";

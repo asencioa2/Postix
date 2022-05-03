@@ -51,7 +51,7 @@ if(isset($_POST['delete'])){
 
   $delete = mysqli_real_escape_string($con,$_POST['add']);
   $course = mysqli_real_escape_string($con,$_POST['crs']);
-  $test = "SELECT suser FROM students where semail='$delete' AND cname='$course'";
+  $test = "SELECT suser FROM students where semail='$delete'";
 
   $tresult = mysqli_query($con,$test);
   $tcount = mysqli_num_rows($tresult);
