@@ -2,7 +2,7 @@
 include ('con.php');
 session_start();
 
-$details = array();
+$data = array();
 
 $query = "SELECT * FROM tasks ORDER BY id";
 $statement = $con->prepare($query);
