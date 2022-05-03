@@ -34,7 +34,10 @@
               $.ajax({
                 url: "cal_insert.php",
                 type: "POST",
-                data: { title: title, start: start, end: end },
+                headers: {
+                'Access-Control-Allow-Origin': '*'
+                  },
+                data: {title:title, start:start, end:end},
                 success: function () {
                   calendar.fullCalendar("refetchEvents");
                   alert("Task Created");
@@ -54,7 +57,7 @@
             $.ajax({
               url: "cal_update.php",
               type: "POST",
-              data: { title: title, start: start, end: end, id: id },
+              data: { title:title, start:start, end:end, id:id },
               success: function () {
                 calendar.fullCalendar("refetchEvents");
                 alert("Task Update");
@@ -63,17 +66,14 @@
           },
 
           eventDrop: function (event) {
-            var start = $.fullCalendar.formatDate(
-              event.start,
-              "Y-MM-DD HH:mm:ss"
-            );
+            var start = $.fullCalendar.formatDate(event.start,"Y-MM-DD HH:mm:ss");
             var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
             var title = event.title;
             var id = event.id;
             $.ajax({
               url: "cal_update.php",
               type: "POST",
-              data: { title: title, start: start, end: end, id: id },
+              data: { title:title, start:start, end:end, id:id },
               success: function () {
                 calendar.fullCalendar("refetchEvents");
                 alert("Task Updated");

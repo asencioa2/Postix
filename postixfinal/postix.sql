@@ -79,7 +79,7 @@ INSERT INTO `students` (`semail`, `suser`, `spass`, `creation`) VALUES
 --
 
 CREATE TABLE `tasks` (
-  `id` int(20) NOT NULL,
+  `id` int(50) NOT NULL,
   `title` varchar(350) NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL
