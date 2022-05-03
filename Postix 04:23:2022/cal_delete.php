@@ -2,12 +2,12 @@
 include ('con.php');
 session_start();
 //
-if(isset($_POST["id"])){
+if(isset($_GET["id"])){
  $query = "DELETE from tasks WHERE id=:id";
  $statement = $con->prepare($query);
  $statement->execute(
   array(
-   ':id'=>$_POST['id'])
+   ':id'=>$_GET['id'])
  );
 }
 
